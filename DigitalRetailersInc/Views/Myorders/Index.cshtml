@@ -1,0 +1,81 @@
+﻿@model IEnumerable<DigitalRetailersInc.Models.Myorders>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>MyOrders</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.paymentStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeleveryStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOrdered)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpDeleveyDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeleveryStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOrdered)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpDeleveyDate)
+            </td>
+            <td>
+                    <form action="@Url.Action("Index", "Myorders")" method="get">
+                        @Html.Hidden("ItemId", item.OrderId)
+                        <input type="submit" value="Cancel" class="btn btn-danger" />
+                    </form>
+               @*  <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a> *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
